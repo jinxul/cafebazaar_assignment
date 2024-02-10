@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Cafebazaar Assignment"
-include(":app")
+include(":presentation")
