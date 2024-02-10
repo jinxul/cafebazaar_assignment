@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cafebazaar Assignment"
 include(":presentation")
+include(":data")
+include(":domain")
