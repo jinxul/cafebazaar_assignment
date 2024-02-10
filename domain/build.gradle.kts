@@ -37,8 +37,10 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.domain)
     kapt(libs.hilt.compiler)
+
+    implementation(project(":data"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

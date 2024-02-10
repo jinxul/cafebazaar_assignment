@@ -54,17 +54,11 @@ android {
 
 dependencies {
 
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
-
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.presentation)
     kapt(libs.hilt.compiler)
+
+    implementation(project(":domain"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

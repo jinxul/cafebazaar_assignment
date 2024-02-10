@@ -37,7 +37,8 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.bundles.data)
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
