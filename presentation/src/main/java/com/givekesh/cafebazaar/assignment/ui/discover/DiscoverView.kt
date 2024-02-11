@@ -46,6 +46,7 @@ import com.givekesh.cafebazaar.assignment.R
 import com.givekesh.cafebazaar.assignment.domain.model.movie.response.Movie
 import com.givekesh.cafebazaar.assignment.domain.util.DataState
 import com.givekesh.cafebazaar.assignment.ui.discover.component.HorizontalErrorView
+import com.givekesh.cafebazaar.assignment.ui.discover.component.LoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.MovieItemView
 import kotlinx.coroutines.flow.filter
 
@@ -103,7 +104,8 @@ fun DiscoverView(
             viewModel.processIntent(
                 DiscoverIntent.GetUpcomingMovies(page)
             )
-        }
+        },
+        isLoading = isLoading,
     )
 }
 
@@ -114,6 +116,7 @@ private fun DiscoverViewContent(
     state: LazyGridState,
     hasErrorOccurred: Boolean,
     onRetryClick: () -> Unit,
+    isLoading: Boolean,
 ) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
@@ -175,6 +178,13 @@ private fun DiscoverViewContent(
                 )
             }
         }
+        if (movieList.isNotEmpty() && isLoading) {
+            LoadingView(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 22.dp),
+            )
+        }
         if (movieList.isNotEmpty() && hasErrorOccurred) {
             HorizontalErrorView(
                 modifier = Modifier
@@ -208,7 +218,8 @@ fun PreviewDiscoverView(
             )
         },
         state = rememberLazyGridState(),
-        hasErrorOccurred = true,
+        hasErrorOccurred = false,
         onRetryClick = {},
+        isLoading = true,
     )
 }
