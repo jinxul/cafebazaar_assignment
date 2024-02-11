@@ -140,11 +140,14 @@ private fun DiscoverViewContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .align(Alignment.TopCenter)
-                .padding(top = 99.dp),
+                .padding(top = 60.dp),
             columns = GridCells.Fixed(3),
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalArrangement = Arrangement.spacedBy(32.dp),
-            contentPadding = PaddingValues(horizontal = 14.dp),
+            contentPadding = PaddingValues(
+                horizontal = 14.dp,
+                vertical = 40.dp
+            ),
             state = state,
         ) {
             items(
