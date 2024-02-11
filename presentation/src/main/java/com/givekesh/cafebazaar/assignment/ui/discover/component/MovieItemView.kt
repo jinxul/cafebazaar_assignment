@@ -2,6 +2,7 @@ package com.givekesh.cafebazaar.assignment.ui.discover.component
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -15,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -28,11 +31,13 @@ fun MovieItemView(
     onItemClick: (Movie) -> Unit,
 ) {
     Column(
-        modifier = modifier.clickable { onItemClick(item) }
+        modifier = modifier
+            .clickable { onItemClick(item) }
+            .width(119.dp)
     ) {
         AsyncImage(
             modifier = Modifier
-                .width(119.dp)
+                .fillMaxWidth()
                 .height(154.dp)
                 .clip(RoundedCornerShape(10.dp)),
             model = item.posterPath,
@@ -42,14 +47,18 @@ fun MovieItemView(
         Text(
             modifier = Modifier
                 .padding(top = 10.dp)
+                .padding(horizontal = 8.dp)
+                .fillMaxWidth()
                 .align(Alignment.CenterHorizontally),
             text = item.title,
             style = TextStyle(
                 color = Color(0xFFCBC8C8),
                 fontSize = 14.sp,
                 fontWeight = FontWeight(600),
+                textAlign = TextAlign.Center
             ),
             maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }
