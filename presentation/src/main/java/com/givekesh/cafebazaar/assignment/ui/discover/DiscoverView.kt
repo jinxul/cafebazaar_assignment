@@ -1,5 +1,6 @@
 package com.givekesh.cafebazaar.assignment.ui.discover
 
+import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,6 +31,7 @@ import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -105,6 +107,7 @@ private fun DiscoverViewContent(
     state: LazyGridState,
 ) {
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
 
     Box(
         modifier = modifier
@@ -141,7 +144,10 @@ private fun DiscoverViewContent(
                 .fillMaxWidth()
                 .align(Alignment.TopCenter)
                 .padding(top = 60.dp),
-            columns = GridCells.Fixed(3),
+            columns = when (configuration.orientation) {
+                Configuration.ORIENTATION_PORTRAIT -> 3
+                else -> 5
+            }.let { GridCells.Fixed(it) },
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalArrangement = Arrangement.spacedBy(32.dp),
             contentPadding = PaddingValues(
