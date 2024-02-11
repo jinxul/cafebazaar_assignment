@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +38,7 @@ fun MovieItemView(
                     shape = RoundedCornerShape(10.dp),
                     color = Color(0xFF131313)
                 ),
-            model = item.backdropPath,
+            model = item.posterPath,
             contentDescription = null,
         )
         Text(
@@ -62,7 +63,7 @@ private fun PreviewMovieItemView() {
         item = Movie(
             id = 1,
             title = "Test",
-            backdropPath = "",
+            posterPath = "",
         ),
         onItemClick = {},
     )

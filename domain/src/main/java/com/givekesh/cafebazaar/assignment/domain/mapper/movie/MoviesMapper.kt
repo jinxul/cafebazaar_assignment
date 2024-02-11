@@ -9,8 +9,8 @@ internal class MoviesMapper @Inject constructor(
 ) : ListToListMapper<MoviesResponse.Result, Movie> {
     override fun toObject(from: MoviesResponse.Result) = Movie(
         id = from.id,
-        backdropPath = StringBuilder("https://image.tmdb.org/t/p/w500")
-            .append(from.backdropPath)
+        posterPath = StringBuilder("https://image.tmdb.org/t/p/w500")
+            .append(from.posterPath)
             .toString(),
         title = from.title
     )
