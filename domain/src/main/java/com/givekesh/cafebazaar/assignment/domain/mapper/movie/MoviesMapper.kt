@@ -12,6 +12,6 @@ internal class MoviesMapper @Inject constructor(
         backdropPath = StringBuilder("https://api.themoviedb.org")
             .append(from.backdropPath)
             .toString(),
-        title = from.backdropPath
+        title = from.title
     )
 }
