@@ -45,6 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.givekesh.cafebazaar.assignment.R
 import com.givekesh.cafebazaar.assignment.domain.model.movie.response.Movie
 import com.givekesh.cafebazaar.assignment.domain.util.DataState
+import com.givekesh.cafebazaar.assignment.ui.discover.component.HorizontalErrorView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.MovieItemView
 import kotlinx.coroutines.flow.filter
 
@@ -97,6 +98,12 @@ fun DiscoverView(
         modifier = modifier,
         movieList = upcomingMovies,
         state = state,
+        hasErrorOccurred = hasErrorOccurred,
+        onRetryClick = {
+            viewModel.processIntent(
+                DiscoverIntent.GetUpcomingMovies(page)
+            )
+        }
     )
 }
 
@@ -105,6 +112,8 @@ private fun DiscoverViewContent(
     modifier: Modifier = Modifier,
     movieList: SnapshotStateList<Movie>,
     state: LazyGridState,
+    hasErrorOccurred: Boolean,
+    onRetryClick: () -> Unit,
 ) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
@@ -166,6 +175,16 @@ private fun DiscoverViewContent(
                 )
             }
         }
+        if (movieList.isNotEmpty() && hasErrorOccurred) {
+            HorizontalErrorView(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 35.dp)
+                    .padding(horizontal = 22.dp),
+                errorMessage = "Something went wrong",
+                onRetryClick = onRetryClick,
+            )
+        }
     }
 }
 
@@ -189,5 +208,7 @@ fun PreviewDiscoverView(
             )
         },
         state = rememberLazyGridState(),
+        hasErrorOccurred = true,
+        onRetryClick = {},
     )
 }
