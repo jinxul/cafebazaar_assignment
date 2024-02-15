@@ -207,7 +207,7 @@ private fun DiscoverViewContent(
                 .padding(top = 60.dp),
             columns = when (configuration.orientation) {
                 Configuration.ORIENTATION_PORTRAIT -> 3
-                else -> 5
+                else -> 6
             }.let { GridCells.Fixed(it) },
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalArrangement = Arrangement.spacedBy(32.dp),
