@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesUseCase {
     fun getUpcomingMovies(page: Int): Flow<DataState<List<Movie>>>
+    fun getLocalUpcomingMovies(page: Int): Flow<DataState<List<Movie>>>
 }

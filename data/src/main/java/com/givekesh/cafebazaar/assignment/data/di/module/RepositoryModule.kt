@@ -1,5 +1,7 @@
 package com.givekesh.cafebazaar.assignment.data.di.module
 
+import com.givekesh.cafebazaar.assignment.data.source.local.repository.movies.LocalMoviesRepository
+import com.givekesh.cafebazaar.assignment.data.source.local.repository.movies.LocalMoviesRepositoryImpl
 import com.givekesh.cafebazaar.assignment.data.source.remote.repository.movies.MoviesRepository
 import com.givekesh.cafebazaar.assignment.data.source.remote.repository.movies.MoviesRepositoryImpl
 import dagger.Binds
@@ -13,5 +15,9 @@ import javax.inject.Singleton
 internal abstract class RepositoryModule {
     @Singleton
     @Binds
-    abstract fun bindRepository(impl: MoviesRepositoryImpl): MoviesRepository
+    abstract fun bindMoviesRepository(impl: MoviesRepositoryImpl): MoviesRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindLocalMoviesRepository(impl: LocalMoviesRepositoryImpl): LocalMoviesRepository
 }

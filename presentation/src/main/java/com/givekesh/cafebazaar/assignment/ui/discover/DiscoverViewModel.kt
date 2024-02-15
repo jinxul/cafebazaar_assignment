@@ -36,6 +36,12 @@ class DiscoverViewModel @Inject constructor(
                     is DiscoverIntent.GetUpcomingMovies -> moviesUseCase.getUpcomingMovies(intent.page)
                         .onEach { _upcomingMoviesDataState.value = it }
                         .launchIn(viewModelScope)
+
+                    is DiscoverIntent.GetLocalUpcomingMovies -> moviesUseCase.getLocalUpcomingMovies(
+                        intent.page
+                    )
+                        .onEach { _upcomingMoviesDataState.value = it }
+                        .launchIn(viewModelScope)
                 }
             }
         }

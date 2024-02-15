@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.0-alpha07"
+agp = "8.4.0-alpha09"
 kotlin = "1.9.0"
 core-ktx = "1.12.0"
 junit = "4.13.2"
@@ -17,6 +17,7 @@ moshi = "1.15.0"
 annotation = "1.4.0"
 lifecycle-compose = "2.7.0"
 coil = "2.5.0"
+room = "2.6.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -46,6 +47,9 @@ moshi = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "mo
 annotation = { group = "androidx.annotation", name = "annotation-experimental", version.ref = "annotation" }
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle-compose" }
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -63,6 +67,8 @@ data = [
     "moshi",
     "retrofit-converter-moshi",
     "annotation",
+    "room",
+    "room-ktx",
 ]
 domain = [
     "hilt-android",

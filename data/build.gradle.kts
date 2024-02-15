@@ -43,6 +43,7 @@ dependencies {
     implementation(platform(libs.okhttp.bom))
     implementation(libs.bundles.data)
     kapt(libs.hilt.compiler)
+    kapt(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

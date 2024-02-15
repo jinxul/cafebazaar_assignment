@@ -69,38 +69,54 @@ fun DiscoverView(
     var isLoading by remember { mutableStateOf(false) }
     var hasErrorOccurred by remember { mutableStateOf(false) }
 
+    var isOfflineMode by remember { mutableStateOf(false) }
+
+    var page by remember { mutableIntStateOf(0) }
+    val state = rememberLazyGridState()
+
+    fun getUpcomingMovies() {
+        isOfflineMode = false
+        viewModel.processIntent(
+            DiscoverIntent.GetUpcomingMovies(page)
+        )
+    }
+
     LaunchedEffect(key1 = upcomingMoviesDataState.value) {
-        when (val dataState = upcomingMoviesDataState.value) {
-            DataState.Idle -> Unit
-            DataState.Loading -> {
+        val dataState = upcomingMoviesDataState.value
+        when {
+            dataState == DataState.Idle -> Unit
+            dataState == DataState.Loading -> {
                 hasErrorOccurred = false
                 isLoading = true
             }
 
-            is DataState.Successful -> {
+            dataState is DataState.Successful -> {
                 hasErrorOccurred = false
                 isLoading = false
                 upcomingMovies.addAll(dataState.data)
             }
 
-            is DataState.Failed -> {
+            dataState is DataState.Failed && !isOfflineMode -> {
+                isOfflineMode = true
+                viewModel.processIntent(
+                    DiscoverIntent.GetLocalUpcomingMovies(page)
+                )
+            }
+
+            dataState is DataState.Failed && isOfflineMode -> {
+                isLoading = false
                 isLoading = false
                 hasErrorOccurred = true
             }
         }
     }
 
-    var page by remember { mutableIntStateOf(0) }
-    val state = rememberLazyGridState()
-
     LaunchedEffect(Unit) {
         snapshotFlow { !state.isScrollInProgress && !state.canScrollForward }
             .filter { it }
             .collect {
                 page += 1
-                viewModel.processIntent(
-                    DiscoverIntent.GetUpcomingMovies(page)
-                )
+                getUpcomingMovies()
             }
     }
 
@@ -109,11 +125,7 @@ fun DiscoverView(
         movieList = upcomingMovies,
         state = state,
         hasErrorOccurred = hasErrorOccurred,
-        onRetryClick = {
-            viewModel.processIntent(
-                DiscoverIntent.GetUpcomingMovies(page)
-            )
-        },
+        onRetryClick = { getUpcomingMovies() },
         isLoading = isLoading,
     )
 
@@ -123,11 +135,7 @@ fun DiscoverView(
         exit = fadeOut(tween(400)),
     ) {
         ErrorView(
-            onRetryClick = {
-                viewModel.processIntent(
-                    DiscoverIntent.GetUpcomingMovies(page)
-                )
-            },
+            onRetryClick = { getUpcomingMovies() },
         )
     }
 
