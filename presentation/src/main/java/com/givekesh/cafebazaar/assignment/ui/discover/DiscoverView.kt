@@ -212,8 +212,10 @@ private fun DiscoverViewContent(
             horizontalArrangement = Arrangement.spacedBy(20.dp),
             verticalArrangement = Arrangement.spacedBy(32.dp),
             contentPadding = PaddingValues(
-                horizontal = 14.dp,
-                vertical = 40.dp
+                start = 14.dp,
+                end = 14.dp,
+                top = 40.dp,
+                bottom = 96.dp,
             ),
             state = state,
         ) {
