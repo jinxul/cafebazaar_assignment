@@ -52,9 +52,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.givekesh.cafebazaar.assignment.R
 import com.givekesh.cafebazaar.assignment.domain.model.movie.response.Movie
 import com.givekesh.cafebazaar.assignment.domain.util.DataState
+import com.givekesh.cafebazaar.assignment.ui.discover.component.CircularLoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.ErrorView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.HorizontalErrorView
-import com.givekesh.cafebazaar.assignment.ui.discover.component.LoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.MovieItemView
 import kotlinx.coroutines.flow.filter
 
@@ -211,7 +211,7 @@ private fun DiscoverViewContent(
             }
         }
         if (movieList.isNotEmpty() && isLoading) {
-            LoadingView(
+            CircularLoadingView(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 22.dp),

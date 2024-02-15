@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoadingView(
+fun CircularLoadingView(
     modifier: Modifier = Modifier,
 ) {
     CircularProgressIndicator(
@@ -23,6 +23,6 @@ fun LoadingView(
 
 @Preview
 @Composable
-fun PreviewLoadingView() {
-    LoadingView()
+fun PreviewCircularLoadingView() {
+    CircularLoadingView()
 }
