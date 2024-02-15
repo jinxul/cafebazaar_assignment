@@ -2,6 +2,10 @@ package com.givekesh.cafebazaar.assignment.ui.discover
 
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,6 +52,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.givekesh.cafebazaar.assignment.R
 import com.givekesh.cafebazaar.assignment.domain.model.movie.response.Movie
 import com.givekesh.cafebazaar.assignment.domain.util.DataState
+import com.givekesh.cafebazaar.assignment.ui.discover.component.ErrorView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.HorizontalErrorView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.LoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.MovieItemView
@@ -110,6 +115,20 @@ fun DiscoverView(
         },
         isLoading = isLoading,
     )
+
+    AnimatedVisibility(
+        visible = hasErrorOccurred && upcomingMovies.isEmpty(),
+        enter = fadeIn(tween(400)),
+        exit = fadeOut(tween(400)),
+    ) {
+        ErrorView(
+            onRetryClick = {
+                viewModel.processIntent(
+                    DiscoverIntent.GetUpcomingMovies(page)
+                )
+            },
+        )
+    }
 }
 
 @Composable
