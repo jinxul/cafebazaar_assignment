@@ -7,10 +7,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyGridState
@@ -30,6 +32,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -128,6 +131,16 @@ private fun DiscoverViewContent(
                 color = Color(0xFF131313),
             ),
     ) {
+        Spacer(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .size(305.dp)
+                .background(
+                    brush = Brush.radialGradient(
+                        colors = listOf(Color(0x1AFFFFFF), Color(0xFF131313)),
+                    ),
+                )
+        )
         Text(
             modifier = Modifier
                 .align(Alignment.TopCenter)
