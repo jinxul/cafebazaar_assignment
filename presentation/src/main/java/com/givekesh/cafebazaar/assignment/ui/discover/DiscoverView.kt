@@ -55,6 +55,7 @@ import com.givekesh.cafebazaar.assignment.domain.util.DataState
 import com.givekesh.cafebazaar.assignment.ui.discover.component.CircularLoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.ErrorView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.HorizontalErrorView
+import com.givekesh.cafebazaar.assignment.ui.discover.component.LoadingView
 import com.givekesh.cafebazaar.assignment.ui.discover.component.MovieItemView
 import kotlinx.coroutines.flow.filter
 
@@ -128,6 +129,14 @@ fun DiscoverView(
                 )
             },
         )
+    }
+
+    AnimatedVisibility(
+        visible = isLoading && upcomingMovies.isEmpty(),
+        enter = fadeIn(tween(400)),
+        exit = fadeOut(tween(400)),
+    ) {
+        LoadingView()
     }
 }
 
