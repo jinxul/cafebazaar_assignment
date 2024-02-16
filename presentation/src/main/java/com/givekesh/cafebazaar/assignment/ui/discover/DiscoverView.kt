@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -164,7 +165,7 @@ private fun DiscoverViewContent(
         modifier = modifier
             .fillMaxSize()
             .background(
-                color = Color(0xFF131313),
+                color = MaterialTheme.colorScheme.background,
             ),
     ) {
         Spacer(
@@ -173,8 +174,15 @@ private fun DiscoverViewContent(
                 .size(305.dp)
                 .background(
                     brush = Brush.radialGradient(
-                        colors = listOf(Color(0x1AFFFFFF), Color(0xFF131313)),
-                    ),
+                        colors = listOf(
+                            /**
+                             *  there was no gradiant for light mode!
+                             * suggestion: MaterialTheme.colorScheme.tertiary.copy(alpha = 0.9f)
+                             */
+                            Color(0x1AFFFFFF),
+                            MaterialTheme.colorScheme.background,
+                        )
+                    )
                 )
         )
         Text(
@@ -183,7 +191,7 @@ private fun DiscoverViewContent(
                 .padding(top = 18.dp),
             text = stringResource(R.string.discover),
             style = TextStyle(
-                color = Color(0xFFFF3D00),
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = 24.sp,
                 fontWeight = FontWeight(600),
             )

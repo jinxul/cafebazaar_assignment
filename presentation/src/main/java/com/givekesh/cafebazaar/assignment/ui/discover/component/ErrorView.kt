@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.givekesh.cafebazaar.assignment.R
+import com.givekesh.cafebazaar.assignment.ui.theme.colorError
 
 @Composable
 fun ErrorView(
@@ -38,7 +40,7 @@ fun ErrorView(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFF131313))
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier
@@ -61,7 +63,7 @@ fun ErrorView(
                 modifier = Modifier.padding(top = 16.dp),
                 text = stringResource(R.string.connection_glitch),
                 style = TextStyle(
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.tertiary,
                     fontSize = 16.sp,
                     fontWeight = FontWeight(500),
                 )
@@ -70,7 +72,7 @@ fun ErrorView(
                 modifier = Modifier.padding(top = 16.dp),
                 text = stringResource(R.string.no_internet_error),
                 style = TextStyle(
-                    color = Color(0xFF7E91B7),
+                    color = colorError,
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                     textAlign = TextAlign.Center,

@@ -2,10 +2,14 @@ package com.givekesh.cafebazaar.assignment.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val colorBackground = Color(0xFF131313)
+val colorTitle = Color(0xFFFF3D00)
+val colorItemTitle = Color(0xFFCBC8C8)
+val colorProgressBar = Color(0xFF4BC381)
+val colorButtonBorder = Color(0xFF44464E)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val colorBackgroundLight = Color.White
+val colorItemTitleLight = Color.Black
+
+val colorError = Color(0xFF7E91B7)
+val colorRetryButton = Color(0xFF191A1F)
