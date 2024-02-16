@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cafebazaar Assignment</string>
+    <string name="discover">Discover</string>
+    <string name="try_again">Try again</string>
+    <string name="retry">Retry</string>
+    <string name="no_internet_error">Seems like there\'s an internet connection problem.</string>
+    <string name="connection_glitch">Connection glitch</string>
+</resources>
